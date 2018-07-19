@@ -5,11 +5,8 @@ buildscript {
     springfoxSwaggerVersion    = '2.8.0'
   }
   repositories {
-    //mavenCentral()
-    maven { url "http://nexus:8080/nexus/content/groups/public/" }
-    maven {
-      url "https://plugins.gradle.org/m2/"
-    }
+    mavenCentral()
+    maven { url "https://plugins.gradle.org/m2/" }
   }
   dependencies {
     classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -29,8 +26,7 @@ apply plugin: 'com.palantir.docker'
 sourceCompatibility = 1.8
 
 repositories {
-  //mavenCentral()
-  maven { url "http://nexus:8080/nexus/content/groups/public/" }
+  mavenCentral()
 }
 
 dependencyManagement {

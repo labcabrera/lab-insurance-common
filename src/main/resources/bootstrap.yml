@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: local
+    active: google-cloud
   cloud:
     config:
       name: insurance-common,insurance-common-services
@@ -18,3 +18,9 @@ spring:
   cloud:
     config:
       uri: http://lab-insurance-cloud-config.eu-west-1.elasticbeanstalk.com
+---
+spring:
+  profiles: google-cloud
+  cloud:
+    config:
+      uri: http://35.227.43.230/
