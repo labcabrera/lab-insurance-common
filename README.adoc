@@ -5,3 +5,16 @@
 == Introducción
 
 Módulo de servicios comunes proyecto {linkLabInsurance}[lab-insurance].
+
+== Dependencias
+
+Para la ejecución de este módulo es necesario disponer de las siguientes instancias:
+
+* MongoDB
+* Insurance Cloud Config
+* Insurance Eureka
+
+La carga de la configuración se realiza a través del servidor de configuración definido en
+_src/main/resources/bootstrap.yml_.
+
+El perfil por defecto es _local_ que espera encontrar el servidor en _localhost:8888_.

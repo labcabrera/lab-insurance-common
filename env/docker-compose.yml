@@ -1,0 +1,53 @@
+version: '3.5'
+
+services:
+
+  lab-insurance-mongodb:
+    image: mongo:latest
+    container_name: lab-insurance-mongo
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    ports:
+      - 27017:27017
+    #networks:
+    #  vpc-lab-insurance-local:
+    #    ipv4_address: 172.20.0.2
+    command: mongod --smallfiles --logpath=/dev/null
+
+  #lab-insurance-rabbitmq:
+  #  image: rabbitmq:3.7-management
+  #  container_name: rabbitmq
+  #  ports:
+  #    - "5672:5672"
+  #    - "15672:15672"
+  #  expose:
+  #    - "5672"
+
+  lab-insurance-cloud-config-server:
+    image: labcabrera/lab-insurance-cloud-config-server
+    container_name: lab-insurance-cloud-config-server
+    #networks:
+    #  vpc-lab-insurance-local:
+    #    ipv4_address: 172.20.0.4
+    ports:
+      - "8888:8888"
+
+  lab-insurance-eureka:
+    image: labcabrera/lab-insurance-eureka
+    container_name: lab-insurance-eureka
+    depends_on:
+      - lab-insurance-cloud-config-server
+    #networks:
+    #  vpc-lab-insurance-local:
+    #    ipv4_address: 172.20.0.5
+    ports:
+      - "8070:8070"
+
+#networks:
+#  vpc-lab-insurance-local:
+#    driver: bridge
+#    ipam:
+#      driver: default
+#      config:
+#        - subnet: 172.20.0.0/16

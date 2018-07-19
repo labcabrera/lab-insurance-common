@@ -3,18 +3,16 @@ spring:
     active: local
   cloud:
     config:
-      name: insurance-eureka
+      name: insurance-common,insurance-common-services
+      fail-fast: true
 
 ---
-
 spring:
   profiles: local
   cloud:
     config:
       uri: http://${CLOUD_CONFIG_HOST:localhost}:${CLOUD_CONFIG_PORT:8888}/
-
 ---
-
 spring:
   profiles: aws
   cloud:
